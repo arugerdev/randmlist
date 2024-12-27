@@ -5,7 +5,13 @@ import { parseDate } from "@internationalized/date";
 import ThrashIcon from "@/icons/thrash";
 
 
-const ListData = ({ data, setData, defaultInputType = 'numbers', defaultRemoveInSelect = true }: { data: any[], setData: React.Dispatch<React.SetStateAction<any[]>>, defaultInputType: string, defaultRemoveInSelect: boolean }) => {
+const ListData = ({ data, setData, defaultInputType = 'numbers'
+    // , defaultRemoveInSelect = true
+}: {
+    data: any[], setData: React.Dispatch<React.SetStateAction<any[]>>, defaultInputType: string
+    // , defaultRemoveInSelect: boolean
+}) => {
+
     return (
         <section className="flex flex-col gap-4">
             <section className="flex flex-row gap-4 items-center justify-start w-full">

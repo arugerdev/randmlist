@@ -121,7 +121,9 @@ const ListController = ({ defaultInputType = 'numbers', defaultRemoveInSelect = 
 
                 <section className="w-full max-h-[500px] flex items-start justify-center overflow-auto">
                     <ScrollShadow className="w-full h-full" size={100}>
-                        <ListData data={data} defaultInputType={inputType} defaultRemoveInSelect={removeInSelect} setData={setData} />
+                        <ListData data={data} defaultInputType={inputType}
+                            // defaultRemoveInSelect={removeInSelect}
+                            setData={setData} />
                     </ScrollShadow>
                 </section>
                 <footer className="fixed bottom-0 w-full flex flex-col gap-2 p-2 items-center justify-center shadow-xl bg-background">
