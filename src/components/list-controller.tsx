@@ -30,6 +30,8 @@ const ListController = ({ defaultInputType = 'numbers', defaultRemoveInSelect = 
     const [resultNumber, setResultNumber] = useState<number>(defaultResultNumber);
     const [data, setData] = useState<any[]>([0]);
     const [selectedData, setSelectedData] = useState<any[]>([]);
+    const [rangeMin, setRangeMin] = useState<number>(0);
+    const [rangeMax, setRangeMax] = useState<number>(1);
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const { width, height } = useWindowSize()
     const { isOpen: isHistoryOpen, onOpen: onHistoyOpen, onOpenChange: onHistoyOpenChange } = useDisclosure();
@@ -114,6 +116,38 @@ const ListController = ({ defaultInputType = 'numbers', defaultRemoveInSelect = 
                             <p>Eliminar el registro al ser elegido</p>
                             <Checkbox defaultChecked={defaultRemoveInSelect} isSelected={removeInSelect} onValueChange={setRemoveInSelect} />
                             <Input className="max-w-[256px]" label="Cantidad a seleccionar" labelPlacement="outside-left" max={data.length - 1} min={1} type='number' value={resultNumber.toString()} onChange={(e) => setResultNumber(parseInt(e.target.value))} />
+
+                        </section>
+                    </AccordionItem>
+                    <AccordionItem key="2" aria-label="Generar lista" subtitle="Genera una lista de forma automatica según las configuraciones" title="Generar lista">
+                        <section className="flex flex-row w-full gap-4 items-center justify-start">
+                            <div>
+                                <p><strong>Generar por rango:</strong> </p>
+                                <div className="flex flex-row gap-0">
+                                    <Input className="max-w-[128px]" label="Min" labelPlacement="outside-left" max={Math.max()} min={Math.min()} type='number' value={rangeMin} onChange={(e) => {
+                                        if (e.target.value >= rangeMax) {
+                                            setRangeMax(parseInt(e.target.value) + 1)
+                                        }
+                                        setRangeMin(parseInt(e.target.value))
+                                    }} />
+                                    <Input className="max-w-[128px]" label="Max" labelPlacement="outside-left" max={Math.max()} min={Math.min()} type='number' value={rangeMax} onChange={(e) => {
+                                        if (e.target.value <= rangeMin) {
+                                            setRangeMin(parseInt(e.target.value) - 1)
+                                        }
+                                        setRangeMax(parseInt(e.target.value))
+                                    }} />
+                                    <Button className="font-bold ml-4" color="primary" variant="faded" onPress={() => {
+                                        setInputType('numbers')
+                                        const newArray = new Array(rangeMax - rangeMin)
+                                        for (let index = 0; index <= (rangeMax - rangeMin); index++) {
+                                            newArray[index] = rangeMin + index;
+                                            
+                                        }
+                                        setData(newArray)
+                                    }}>Generar</Button>
+                                </div>
+                            </div>
+
                         </section>
                     </AccordionItem>
                 </Accordion>

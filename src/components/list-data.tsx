@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Button, DatePicker, Input } from "@nextui-org/react";
+import { Button, DatePicker, Input, Checkbox } from "@nextui-org/react";
 import { parseDate } from "@internationalized/date";
 
 import ThrashIcon from "@/icons/thrash";
@@ -19,7 +19,7 @@ const ListData = ({ data, setData, defaultInputType = 'numbers'
                     setData([...data, (defaultInputType === 'numbers' ? 0 : (defaultInputType === 'date' ? parseDate('2024-12-19') : ''))]);
                 }}>+</Button>
             </section>
-            <section className="grid grid-cols-5 gap-4 items-center justify-center w-full relative">
+            <section className="grid grid-cols-5 gap-4 items-center justify-center w-full relative pb-32">
                 {data.map((item, index) => (
                     <section key={index} className="flex flex-row gap-4 items-center justify-start max-w-content p-4 bg-foreground-50 shadow-xl rounded-xl">
                         {defaultInputType === 'any' &&
