@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Button, DatePicker, Input, Checkbox } from "@nextui-org/react";
+import { Button, DatePicker, Input } from "@nextui-org/react";
 import { parseDate } from "@internationalized/date";
 
 import ThrashIcon from "@/icons/thrash";

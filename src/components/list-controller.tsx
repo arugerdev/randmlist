@@ -124,13 +124,13 @@ const ListController = ({ defaultInputType = 'numbers', defaultRemoveInSelect = 
                             <div>
                                 <p><strong>Generar por rango:</strong> </p>
                                 <div className="flex flex-row gap-0">
-                                    <Input className="max-w-[128px]" label="Min" labelPlacement="outside-left" max={Math.max()} min={Math.min()} type='number' value={rangeMin} onChange={(e) => {
+                                    <Input className="max-w-[128px]" label="Min" labelPlacement="outside-left" max={Math.max()} min={Math.min()} type='number' value={rangeMin.toString()} onChange={(e) => {
                                         if (parseInt(e.target.value) >= rangeMax) {
                                             setRangeMax(parseInt(e.target.value) + 1)
                                         }
                                         setRangeMin(parseInt(e.target.value))
                                     }} />
-                                    <Input className="max-w-[128px]" label="Max" labelPlacement="outside-left" max={Math.max()} min={Math.min()} type='number' value={rangeMax} onChange={(e) => {
+                                    <Input className="max-w-[128px]" label="Max" labelPlacement="outside-left" max={Math.max()} min={Math.min()} type='number' value={rangeMax.toString()} onChange={(e) => {
                                         if (parseInt(e.target.value) <= rangeMin) {
                                             setRangeMin(parseInt(e.target.value) - 1)
                                         }
